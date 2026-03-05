@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 function App() {
   /* You will need to use a boolean state to manage the weather */
   const [isRaining, setIsRaining] = useState(false);
-  const title = isRaining ? 'Rain Time' : 'Sun Time';
-  const background = isRaining ? 'rainy' : 'sunny';
 
   function onSunClick() {
     // Complete this code when we click on Sunny Time
@@ -17,17 +15,19 @@ function App() {
 
   function getTitle() {
     // This function manage the H1 text, depending on the weather
-      
-      
+      if(isRaining) return "Rain Time";
+      return 'Sun Time'
     }
     
     function getBackgroundColor() {
       // This function manage the main class value, depending on the weather
+      if(isRaining) return "rainy"
+      return "sunny"
   }
 
   return (
-    <main className={background}>
-      <h1>{title}</h1>
+    <main className={getBackgroundColor()}>
+      <h1>{getTitle()}</h1>
       <button onClick={onSunClick}>Sunny Time</button>
       <button onClick={onRainClick}>Rainy Time</button>
     </main>
